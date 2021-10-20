@@ -66,7 +66,7 @@ class Deck:
         self._cards: list[Card] = []
 
         for r in RANKS:
-            self._cards.extend([Card(r, s) for s in SUITS])
+            self._cards.extend(Card(r, s) for s in SUITS)
 
         self.shuffle()
 
