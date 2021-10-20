@@ -1,10 +1,3 @@
-"""
-Card
-Deck
-ComputerUser
-HumanUser
-Game
-"""
 import random
 import sys
 
@@ -209,7 +202,7 @@ class Game:
                 print(f"{self.player.name} stays...")
                 self.advance()
             case _:
-                print("Invalid input. Hit, Stay, or Split: ")
+                print("Invalid input. Choose one of Hit, Stay, or Hit. ")
                 self.prompt()
 
     def hit(self, player: Player | Dealer) -> None:
@@ -228,8 +221,8 @@ class Game:
 
         else:
             self.dealer_decision()
-            self.display()
             self.calculate_winner()
+            self.display()
 
     def calculate_winner(self) -> None:
         if self.player.score > self.dealer.score:
@@ -244,22 +237,21 @@ class Game:
         self.play_again()
 
     def dealer_decision(self) -> None:
-        while self.dealer.peek_score < 17:
+        while self.dealer.score < 17:
             self.hit(self.dealer)
-
         else:
             print("Dealer stays.")
             self.dealer.flip()
-
-        self.display()
+            self.display()
 
     def bust(self, loser: Player | Dealer) -> None:
         if isinstance(loser, Player):
-            print(f"{loser.name} busts! {self.player.name} wins!")
+            print(f"{loser.name} busts with {loser.score}! {self.dealer.name} wins!")
 
         else:
-            print(f"{loser.name} busts! A good attempt, but {loser.name} lose.")
-
+            print(f"{loser.name} busts with {loser.score}! A good attempt, but {loser.name} loses.")
+        
+        self.display()
         self.play_again()
 
     def play_again(self) -> None:
