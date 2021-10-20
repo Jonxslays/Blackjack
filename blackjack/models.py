@@ -97,7 +97,7 @@ class Player:
         self._name = name
         self._deck = deck
         self._hand = self.deck.draw_many(2)
-        self._score: int = 0
+        self._score = 0
         self.update()
 
     @property
