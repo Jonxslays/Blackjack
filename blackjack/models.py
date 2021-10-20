@@ -70,10 +70,9 @@ class Deck:
 
         self.shuffle()
 
-    def shuffle(self) -> "Deck":
+    def shuffle(self) -> None:
         """Shuffles the deck."""
         random.shuffle(self._cards)
-        return self
 
     def draw(self) -> Card:
         """Draws one card from the deck."""
